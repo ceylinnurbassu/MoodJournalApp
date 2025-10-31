@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoodJournalApp.MainPage"
+             Title="Mood Journal">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <!-- 🧠 Uygulama Başlığı -->
+            <Label Text="Mood Journal"
+                   Style="{StaticResource SubHeadline}"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- 🗨️ Soru -->
+            <Label Text="How are you feeling today?"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource Gray900}" />
+
+            <!-- 😊 Duygu Butonları -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Text="😊" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Happy" />
+                <Button Text="😐" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Neutral" />
+                <Button Text="😔" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Sad" />
+                <Button Text="😡" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Angry" />
+            </HorizontalStackLayout>
+
+            <!-- 📊 Seçilen Duygu -->
+            <Label x:Name="MoodLabel"
+                   Text="Select your mood above"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+
+            <!-- 📝 Günlük Notu -->
+            <Editor x:Name="NoteEditor"
+                    Placeholder="Write your thoughts..."
+                    AutoSize="TextChanges"
+                    HeightRequest="150"
+                    BackgroundColor="{StaticResource Gray100}"
+                    TextColor="{StaticResource Gray900}"
+                    PlaceholderColor="{StaticResource Gray500}" />
+
+            <!-- 💾 Kaydetme Butonu -->
+            <Button Text="Save Entry"
+                    Clicked="OnSaveClicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="200" />
+
+            <!-- ✅ Kaydedilen Not Bilgisi -->
+            <Label x:Name="SavedNoteLabel"
+                   Text=""
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource PrimaryDarkText}" />
+
+            <!-- 🧾 Son 7 Mood -->
+            <CollectionView x:Name="MoodList"
+                            HeightRequest="300"
+                            BackgroundColor="{StaticResource BackgroundLight}"
+                            Margin="10,5,10,20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5"
+                               Padding="10"
+                               BackgroundColor="{StaticResource BackgroundLight}"
+                               BorderColor="{StaticResource Gray300}">
+                            <Label Text="{Binding}"
+                                   FontSize="14"
+                                   TextColor="{StaticResource Gray900}" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

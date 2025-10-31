@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MoodJournalApp (MacCatalyst)": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "hotReloadEnabled": true,
+      "nativeDebugging": true
+    }
+  }
+}
