@@ -1,16 +1,22 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Windows.Input;
 
 namespace MoodJournalApp;
 
 public partial class MainPage : ContentPage
 {
     private string selectedMood = string.Empty;
-    private ObservableCollection<string> moodHistory = new();
+    private ObservableCollection<MoodEntry> moodHistory = new();
+
+    public ICommand ClearAllCommand { get; }
 
     public MainPage()
     {
         InitializeComponent();
         MoodList.ItemsSource = moodHistory;
+        ClearAllCommand = new Command(OnClearAll);
+        BindingContext = this;
     }
 
     private void OnMoodSelected(object sender, EventArgs e)
@@ -36,17 +42,32 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        string note = NoteEditor.Text ?? string.Empty;
-        string entry = $"{DateTime.Now:HH:mm} - {selectedMood}: {note}";
+        var entry = new MoodEntry
+        {
+            Mood = selectedMood,
+            Note = NoteEditor.Text,
+            Date = DateTime.Now
+        };
 
-        // Listeyi otomatik yenileyen koleksiyon
         moodHistory.Insert(0, entry);
 
-        // Sadece son 7 kaydı tut
+        // Only last 7 moods visible
         if (moodHistory.Count > 7)
             moodHistory.RemoveAt(moodHistory.Count - 1);
 
         SavedNoteLabel.Text = $"Saved: {selectedMood}";
         NoteEditor.Text = string.Empty;
+    }
+
+    private void OnDeleteClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is MoodEntry entry)
+            moodHistory.Remove(entry);
+    }
+
+    private void OnClearAll()
+    {
+        moodHistory.Clear();
+        SavedNoteLabel.Text = "All entries cleared!";
     }
 }

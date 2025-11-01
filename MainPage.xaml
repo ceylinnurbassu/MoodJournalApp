@@ -5,71 +5,107 @@
              Title="Mood Journal">
 
     <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="20">
+        <VerticalStackLayout Padding="25" Spacing="20" BackgroundColor="{StaticResource BackgroundLight}">
 
-            <!-- 🧠 Uygulama Başlığı -->
-            <Label Text="Mood Journal"
-                   Style="{StaticResource SubHeadline}"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+            <!-- Başlık -->
+            <Frame BackgroundColor="{StaticResource PrimaryLight}" Padding="15" CornerRadius="12">
+                <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Mood Journal"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryDark}" />
+                
+                </VerticalStackLayout>
+            </Frame>
 
-            <!-- 🗨️ Soru -->
+            <!-- Soru -->
             <Label Text="How are you feeling today?"
                    FontSize="18"
                    HorizontalOptions="Center"
                    TextColor="{StaticResource Gray900}" />
+            <!-- Seçilen Duygu -->
+            <Label x:Name="MoodLabel"
+                   Text="Select your mood:"
+                   FontSize="17"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource Gray500}" />
 
-            <!-- 😊 Duygu Butonları -->
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
-                <Button Text="😊" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Happy" />
-                <Button Text="😐" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Neutral" />
-                <Button Text="😔" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Sad" />
-                <Button Text="😡" FontSize="30" Clicked="OnMoodSelected" CommandParameter="Angry" />
+            <!-- Emoji Butonları -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Text="😊" FontSize="32" Clicked="OnMoodSelected" CommandParameter="Happy" />
+                <Button Text="😐" FontSize="32" Clicked="OnMoodSelected" CommandParameter="Neutral" />
+                <Button Text="😔" FontSize="32" Clicked="OnMoodSelected" CommandParameter="Sad" />
+                <Button Text="😡" FontSize="32" Clicked="OnMoodSelected" CommandParameter="Angry" />
+                <Button Text="😴" FontSize="32" Clicked="OnMoodSelected" CommandParameter="Tired" />
             </HorizontalStackLayout>
 
-            <!-- 📊 Seçilen Duygu -->
-            <Label x:Name="MoodLabel"
-                   Text="Select your mood above"
-                   FontSize="18"
-                   HorizontalOptions="Center"
-                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+            
 
-            <!-- 📝 Günlük Notu -->
+            <!-- Not Alanı -->
             <Editor x:Name="NoteEditor"
                     Placeholder="Write your thoughts..."
                     AutoSize="TextChanges"
-                    HeightRequest="150"
+                    HeightRequest="120"
                     BackgroundColor="{StaticResource Gray100}"
                     TextColor="{StaticResource Gray900}"
                     PlaceholderColor="{StaticResource Gray500}" />
 
-            <!-- 💾 Kaydetme Butonu -->
+            <!-- Kaydet Butonu -->
             <Button Text="Save Entry"
                     Clicked="OnSaveClicked"
-                    HorizontalOptions="Center"
-                    WidthRequest="200" />
+                    WidthRequest="200"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource PrimaryDark}"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
 
-            <!-- ✅ Kaydedilen Not Bilgisi -->
+            <!-- Clear All (Command Binding) -->
+            <Button Text="Clear All"
+                    Command="{Binding ClearAllCommand}"
+                    WidthRequest="200"
+                    BackgroundColor="{StaticResource Gray300}"
+                    TextColor="{StaticResource Gray900}"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+
+            <!-- Kaydedilen Bilgi -->
             <Label x:Name="SavedNoteLabel"
                    Text=""
                    FontSize="14"
                    HorizontalOptions="Center"
-                   TextColor="{StaticResource PrimaryDarkText}" />
+                   TextColor="{StaticResource PrimaryDark}" />
 
-            <!-- 🧾 Son 7 Mood -->
+            <!-- Son 7 Mood -->
+            <Label Text="Recent Mood Entries (last 7)"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   TextColor="{StaticResource Gray900}" />
+
             <CollectionView x:Name="MoodList"
-                            HeightRequest="300"
-                            BackgroundColor="{StaticResource BackgroundLight}"
-                            Margin="10,5,10,20">
+                            HeightRequest="350"
+                            BackgroundColor="Transparent">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Margin="5"
                                Padding="10"
-                               BackgroundColor="{StaticResource BackgroundLight}"
-                               BorderColor="{StaticResource Gray300}">
-                            <Label Text="{Binding}"
-                                   FontSize="14"
-                                   TextColor="{StaticResource Gray900}" />
+                               BackgroundColor="White"
+                               BorderColor="{StaticResource Gray300}"
+                               CornerRadius="10"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       Text="{Binding DisplayText}"
+                                       FontSize="14"
+                                       TextColor="{StaticResource Gray900}"
+                                       LineBreakMode="WordWrap" />
+                                <Button Grid.Row="0" Grid.Column="1"
+                                        Text="🗑️"
+                                        Clicked="OnDeleteClicked"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="Transparent"
+                                        FontSize="14"
+                                        TextColor="{StaticResource Gray500}" />
+                            </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

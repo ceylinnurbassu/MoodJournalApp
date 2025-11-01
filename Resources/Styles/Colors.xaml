@@ -1,34 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?> 
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xaml-comp compile="true"?>
-<ResourceDictionary 
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- 🎨 Ana Renk Paleti -->
-    <Color x:Key="Primary">#6A5ACD</Color>
-    <Color x:Key="PrimaryDark">#483D8B</Color>
-    <Color x:Key="PrimaryLight">#B9A8FF</Color>
-    <Color x:Key="PrimaryDarkText">#2E2459</Color> <!-- 🔹 eksikti -->
-    <Color x:Key="Accent">#7CFC00</Color>
-    <Color x:Key="BackgroundLight">#FAFAFA</Color>
+    <Color x:Key="Primary">#FFCEE4B4</Color>
+    <Color x:Key="PrimaryDark">#FF104B07</Color>
+    <Color x:Key="PrimaryLight">#FFF6EFFE</Color>
+    <Color x:Key="BackgroundLight">#FFFAF9FD</Color>
 
-    <!-- ⚙️ Gri Tonları -->
-    <Color x:Key="Gray100">#E1E1E1</Color>
-    <Color x:Key="Gray300">#ACACAC</Color>
-    <Color x:Key="Gray500">#6E6E6E</Color>
-    <Color x:Key="Gray900">#212121</Color>
+    <Color x:Key="Gray100">#E5E7EB</Color>
+    <Color x:Key="Gray300">#D1D5DB</Color>
+    <Color x:Key="Gray500">#6B7280</Color>
+    <Color x:Key="Gray900">#111827</Color>
 
-    <!-- 😊 Duygu Renkleri -->
-    <Color x:Key="MoodHappy">#FFE97F</Color>
-    <Color x:Key="MoodNeutral">#C0C0C0</Color>
-    <Color x:Key="MoodSad">#A6C8FF</Color>
-    <Color x:Key="MoodAngry">#FF9999</Color>
-
-    <!-- 🌈 Fırçalar -->
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
-    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}" />
-    <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}" />
-    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundLight}" />
-    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource Accent}" />
-
 </ResourceDictionary>
