@@ -7,9 +7,8 @@
     <Color x:Key="PrimaryDark">#FF104B07</Color>
     <Color x:Key="PrimaryLight">#FFF6EFFE</Color>
     <Color x:Key="BackgroundLight">#FFFAF9FD</Color>
-
-    <Color x:Key="Gray100">#E5E7EB</Color>
-    <Color x:Key="Gray300">#D1D5DB</Color>
+    <Color x:Key="NoteEnterenceColour">#C1D8FDBF</Color>
+    <Color x:Key="Gray300">#2B6D7A0F</Color>
     <Color x:Key="Gray500">#6B7280</Color>
     <Color x:Key="Gray900">#111827</Color>
 

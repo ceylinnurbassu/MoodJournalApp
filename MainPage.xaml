@@ -5,15 +5,15 @@
              Title="Mood Journal">
 
     <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="20" BackgroundColor="{StaticResource BackgroundLight}">
+        <VerticalStackLayout Padding="25" Spacing="20" BackgroundColor="#CBF4FFDE">
 
             <!-- Başlık -->
-            <Frame BackgroundColor="{StaticResource PrimaryLight}" Padding="15" CornerRadius="12">
+            <Frame BackgroundColor="#34F4FF2D" Padding="15" CornerRadius="12">
                 <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
                     <Label Text="Mood Journal"
                            FontSize="28"
                            FontAttributes="Bold"
-                           TextColor="{StaticResource PrimaryDark}" />
+                           TextColor="#FF0E4306" />
                 
                 </VerticalStackLayout>
             </Frame>
@@ -46,7 +46,7 @@
                     Placeholder="Write your thoughts..."
                     AutoSize="TextChanges"
                     HeightRequest="120"
-                    BackgroundColor="{StaticResource Gray100}"
+                    BackgroundColor="{StaticResource NoteEnterenceColour}"
                     TextColor="{StaticResource Gray900}"
                     PlaceholderColor="{StaticResource Gray500}" />
 
@@ -76,40 +76,41 @@
                    TextColor="{StaticResource PrimaryDark}" />
 
             <!-- Son 7 Mood -->
-            <Label Text="Recent Mood Entries (last 7)"
+            <Label Text="Last 7 Mood Entries"
                    FontAttributes="Bold"
                    FontSize="16"
                    TextColor="{StaticResource Gray900}" />
 
             <CollectionView x:Name="MoodList"
-                            HeightRequest="350"
-                            BackgroundColor="Transparent">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Margin="5"
-                               Padding="10"
-                               BackgroundColor="White"
-                               BorderColor="{StaticResource Gray300}"
-                               CornerRadius="10"
-                               HasShadow="True">
-                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
-                                <Label Grid.Row="0" Grid.Column="0"
-                                       Text="{Binding DisplayText}"
-                                       FontSize="14"
-                                       TextColor="{StaticResource Gray900}"
-                                       LineBreakMode="WordWrap" />
-                                <Button Grid.Row="0" Grid.Column="1"
-                                        Text="🗑️"
-                                        Clicked="OnDeleteClicked"
-                                        CommandParameter="{Binding}"
-                                        BackgroundColor="Transparent"
-                                        FontSize="14"
-                                        TextColor="{StaticResource Gray500}" />
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                HeightRequest="350"
+                BackgroundColor="Transparent">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5"
+                        Padding="10"
+                        BackgroundColor="{Binding MoodColor}"  
+                        BorderColor="{StaticResource Gray300}"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                            <Label Grid.Row="0" Grid.Column="0"
+                                Text="{Binding DisplayText}"
+                                FontSize="14"
+                                TextColor="{StaticResource Gray900}"
+                                LineBreakMode="WordWrap" />
+                            <Button Grid.Row="0" Grid.Column="1"
+                                    Text="🗑️"
+                                    Clicked="OnDeleteClicked"
+                                    CommandParameter="{Binding}"
+                                    BackgroundColor="Transparent"
+                                    FontSize="14"
+                                    TextColor="{StaticResource Gray500}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
 
         </VerticalStackLayout>
     </ScrollView>
