@@ -1,3 +1,5 @@
+using System.Globalization; 
+
 namespace MoodJournalApp
 {
     public class MoodEntry
@@ -5,11 +7,11 @@ namespace MoodJournalApp
         public string Mood { get; set; } = string.Empty;
         public string Note { get; set; } = string.Empty;
         public DateTime Date { get; set; }
-        // Auto-Formatting automatically formats date and mood for display
-        public string DisplayText => $"{Date:dd MMM HH:mm} | {Mood}\n{Note}";
+        // Auto formatting automatically formats date and mood for display
+        public string DisplayText =>  $"{Date.ToString("dd MMM HH:mm", new CultureInfo("en-US"))} | {Mood}\n{Note}";
 
 
-        // Aesthetic–Usability Effect Visually pleasing pastel colors improve perceived usability
+        // Aesthetic–Usability effect visually pleasing pastel colors improve perceived usability
         public Color MoodColor => Mood switch
         {
             "Happy" => Color.FromArgb("#FFF4B1"),
