@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MoodJournalApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+547fe4bb0a6de985a4025f5bfc3c3a10123a3758")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+eceff16334c62903a77544b601d843f9bf474ecc")]
 [assembly: System.Reflection.AssemblyProductAttribute("MoodJournalApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MoodJournalApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
