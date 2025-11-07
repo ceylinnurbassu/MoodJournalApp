@@ -60,7 +60,7 @@ public partial class MainPage : ContentPage
         moodHistory.Insert(0, entry);
 
         // Data Persistence Simulation: Only last 7 moods visible
-        if (moodHistory.Count > 7)
+        if (moodHistory.Count > 5)
             moodHistory.RemoveAt(moodHistory.Count - 1);
 
         SavedNoteLabel.Text = $"Saved: {selectedMood}";

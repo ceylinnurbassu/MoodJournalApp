@@ -79,7 +79,7 @@
                    HorizontalOptions="Center"
                    TextColor="{StaticResource PrimaryDark}" />
 
-            <Label Text="Last 7 Mood Entries"
+            <Label Text="Last 5 Mood Entries"
                    FontAttributes="Bold"
                    FontSize="16"
                    TextColor="{StaticResource Gray900}" />
